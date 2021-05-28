@@ -60,9 +60,17 @@ class CoVaccine(Resource):
             db.session.commit()
             return datas, 201
 
+        # @marshal_with(to_json)
     def get(self, hospital_name):
-        return {"hospital_name": hospital_name}
-
+        client_input = co_vaccine.parse_args()
+        results = VaccineDatabase.query.filter_by(date=client_input['date']) and VaccineDatabase.query.filter_by(
+            hospital_name=hospital_name).all()
+        for result in range(len(results)):
+            g.counting = +result
+        sum = 15 - g.counting
+        print(client_input['date'])
+        to_str = str(sum)
+        return {"vacancy": to_str}
 
 api.add_resource(CoVaccine, "/vaccineregistration/<string:hospital_name>")
 if __name__ == '__main__':
