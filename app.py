@@ -76,7 +76,7 @@ class CoVaccine(Resource):
             g.counting = +result
         sum = 15 - g.counting
         to_str = str(sum)
-        return {"number of available slots": to_str}, 200
+        return {"number of available slots in hospital": to_str}, 200
 
 
 api.add_resource(CoVaccine, "/vaccineregistration/<string:hospital_name>")
