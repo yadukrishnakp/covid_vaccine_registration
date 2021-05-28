@@ -70,7 +70,7 @@ class CoVaccine(Resource):
         sum = 15 - g.counting
         print(client_input['date'])
         to_str = str(sum)
-        return {"vacancy": to_str}
+        return {"number of available slots": to_str}
 
 api.add_resource(CoVaccine, "/vaccineregistration/<string:hospital_name>")
 if __name__ == '__main__':
